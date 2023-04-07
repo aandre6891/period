@@ -9,18 +9,18 @@ end
 
 def get_last_period
   puts "Please #{@name}, enter the date when your last period started in this format: (MM/DD/YYYY)"
-  @last_period = Date.strptime(gets.chomp, "%d/%m") 
+  @last_period = Date.parse(gets.chomp)
   cycle_length
 end
 
 def cycle_length
-  puts "How many days is your period cycle usually?"
-  @duration = gets.chomp.to_i 
+  print "How many days is your period cycle usually? "
+  @duration = gets.to_i 
   next_period_calc
 end
 
 def next_period_calc
-  @next_period = @last_period.next_day(@duration)  
+  @next_period = @last_period + @duration  
   calc_pregnancy_risk
 end
 
