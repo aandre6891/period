@@ -25,10 +25,13 @@ def next_period_calc
 end
 
 def calc_pregnancy_risk
-  if @next_period < Date.today # we had 5 days tolerance
+  if
+    @next_period + 5 < Date.today # if the tolerance period is over we give a different alert
+    print_result_danger
+  elsif @next_period < Date.today # if the next period is before today we give an alert
     print_result_alert
   else
-    print_result_ok
+    print_result_ok # everything is fine
   end
 end
 
@@ -38,8 +41,14 @@ def print_result_alert
   puts "If you usually have a regular period wait the #{(@next_period + 5).strftime("%d/%m/%Y")} and then get a pregnancy test".center(100, "-")  
 end
 
+def print_result_danger
+    puts "Your next period should have started on the #{@next_period.strftime("%d/%m/%Y")}".center(100, "-")
+    puts "This doesn't mean you are pregnant".center(100, "-")
+    puts "We suggest anyway to get a pregnancy test or to go to a gynecologist".center(100, "-")  
+  end
+
 def print_result_ok
-    puts "Your next period should start on the #{@next_period.strftime("%d/%m/%Y")}."
+    puts "It's not time yet, your next period should start on the #{@next_period.strftime("%d/%m/%Y")}."
 end
 
 welcome
