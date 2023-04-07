@@ -36,19 +36,19 @@ def calc_pregnancy_risk
 end
 
 def print_result_alert
-  puts "Your next period should have started on the #{@next_period.strftime("%d/%m/%Y")}".center(100, "-")
+  puts "#{@name}, Your next period should have started on the #{@next_period.strftime("%d/%m/%Y")}".center(100, "-")
   puts "This doesn't mean you are pregnant".center(100, "-")
-  puts "If you usually have a regular period wait the #{(@next_period + 5).strftime("%d/%m/%Y")} and then get a pregnancy test".center(100, "-")  
+  puts "If you usually have a regular period, wait the #{(@next_period + 5).strftime("%d/%m/%Y")} and then get a pregnancy test".center(100, "-")  
 end
 
 def print_result_danger
-    puts "Your next period should have started on the #{@next_period.strftime("%d/%m/%Y")}".center(100, "-")
+    puts "#{@name}, Your next period should have started on the #{@next_period.strftime("%d/%m/%Y")}".center(100, "-")
     puts "This doesn't mean you are pregnant".center(100, "-")
-    puts "We suggest anyway to get a pregnancy test or to go to a gynecologist".center(100, "-")  
+    puts "Anyways, it would be better getting a pregnancy test or going to a gynecologist".center(100, "-")  
   end
 
 def print_result_ok
-    puts "It's not time yet, your next period should start on the #{@next_period.strftime("%d/%m/%Y")}."
+    puts "It's not time yet #{@name}, your next period should start on the #{@next_period.strftime("%d/%m/%Y")}."
 end
 
 welcome
