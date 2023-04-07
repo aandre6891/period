@@ -21,10 +21,24 @@ end
 
 def next_period_calc
   @next_period = @last_period.next_day(@duration)  
-  print_result
+  calc_pregnancy_risk
 end
 
-def print_result
+def calc_pregnancy_risk
+  if @next_period < Date.today # we had 5 days tolerance
+    print_result_alert
+  else
+    print_result_ok
+  end
+end
+
+def print_result_alert
+  puts "Your next period should have started on the #{@next_period.strftime("%d/%m/%Y")}".center(100, "-")
+  puts "This doesn't mean you are pregnant".center(100, "-")
+  puts "If you usually have a regular period wait the #{(@next_period + 5).strftime("%d/%m/%Y")} and then get a pregnancy test".center(100, "-")  
+end
+
+def print_result_ok
     puts "Your next period should start on the #{@next_period.strftime("%d/%m/%Y")}."
 end
 
